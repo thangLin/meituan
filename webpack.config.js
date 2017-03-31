@@ -1,11 +1,12 @@
 var webpack = require('webpack');
 // var ExtractTextPlugin = require("extract-text-webpack-plugin");//css
 var providePlugin = new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery' });
+var path = require("path");
 module.exports = {
     entry: './src/js/entry.js',
     output: {
-        path: '/./static/',
-        publicPath: 'http://localhost:8080/static/',
+        path: path.join(__dirname,"./static/"),
+        publicPath: './static/',
         filename: 'index.js'
     },
     module: {
