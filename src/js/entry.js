@@ -1,4 +1,8 @@
-require('../css/entry.less')
+require('../css/entry.less');
+require("../css/wyMeiTuan.less");
+require("./wyMeiTuan/footerModule.js")
+require("./wyMeiTuan/wyMeiTuan.js");
+
 var React = require("react"),
     ReactDom = require("react-dom");
 
@@ -119,7 +123,7 @@ var OneTypeList  = React.createClass({
                             <span className="people-like">{oData[i][3]}</span>
                         </div>
                         <div className="price-region">
-                            <span>{oData[i][4]}</span>
+                            <span className="buy-money">{oData[i][4]}</span>
                             <div className="buy-return">
                                 <i className= 'food-buy'></i>
                                 <span className= 'count-dish'></span>
@@ -180,5 +184,3 @@ ReactDom.render(
     <ContentApp oData = {data}/>,
     document.getElementById('content-wrap')
 )
-
-

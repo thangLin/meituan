@@ -105,6 +105,27 @@ window.onload = function() {
                 $j(".single" + j + "").html('￥' + singleMoney * oClick);
                 $j(".const" + j + "").html(oClick);
 
+                //alert只有点击确认 ， 点击清空购物车区域，直接清空一切
+                $j(".gap-right").click(function() {
+                    // alert("是否清空购物车内所有商品？");
+                    num = 0;
+                    totalMoney = 0;
+                    flag = true;
+                    oClick = 0;
+                    lock = 1;
+                    $j(".ectype" + j + "").remove();
+                    $j(".food-return").eq(j).css("display", "none");
+                    countDish.eq(j).css("display", "none");
+
+                    $j(".icon-wrap").css("backgroundColor", "#aaa");
+                    $j(".footer-gap").css("background-color", "#928686");
+                    $j(".footer-gap span").html("10元起送");
+                    $j(".shop-gap").css("display", "none");
+                    $j(".icon-num").css("display", "none");
+                    $j(".footer-money p").css("display", "none");
+                    $j(".footer-money span").removeClass("initial-span").html("购物车空空入也~");
+                })
+
 
             });
             foodReturn.eq(j).click(function() {
@@ -148,11 +169,6 @@ window.onload = function() {
 
     $j(".gap-shadow").click(function() {
         $j(".shop-gap").css("display", "none");
-    })
-
-    $j(".gap-right").click(function() {
-        alert("是否清空购物车内所有商品？");
-
     })
 
 
