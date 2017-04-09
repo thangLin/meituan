@@ -10024,7 +10024,6 @@ ReactDom.render(React.createElement(ShoppingCart, null), document.getElementById
 
 window.onload = function () {
     var foodBuy = $j(".food-buy"); // +
-    console.log(foodBuy);
     var countDish = $j(".count-dish"); // 显示单个商品购买数量
     var foodReturn = $j(".food-return"); // -
     var buyMoney = $j(".buy-money");
@@ -10065,11 +10064,12 @@ window.onload = function () {
                     $j(".footer-gap span").html("还差" + (10 - totalMoney) + "元");
                 }
 
+                //点击商品之后在购物袋中添加对应商品信息
                 if (lock) {
                     html = '<div class="gap-content ectype' + j + '">' + '<div class="food-name">' + $j(".food-name").eq(j).html() + '</div>' + '<div class="food-num">' + '<span class="buy-money single' + j + '">' + $j(".buy-money").eq(j).html() + '</span>' + '<div class="buy-return">' + '<i class="food-buy add' + j + '"></i>' + '<span class="count-dish const' + j + '">1</span>' + '<i class="food-return minus' + j + '"></i>' + '</div>' + '</div>' + '</div>';
                     $j(".gap-head").after(html);
                     lock = 0;
-                    //给动态添加元素添加事件
+                    //元素在onload事件之后添加，需手动添加事件
                     $j(".add" + j + "").click(function () {
                         num++;
                         oClick++;
@@ -10097,19 +10097,16 @@ window.onload = function () {
                         $j(".icon-num").html(num);
                         if (!oClick) {
                             $j(".ectype" + j + "").remove();
-                            countDish.eq(j).css("display", "none");
-                            foodReturn.eq(j).css("display", "none");
+                            show([countDish.eq(j), foodReturn.eq(j)], false);
                         }
                         if (totalMoney < 10 && totalMoney > 0) {
                             $j(".footer-gap span").html("还差" + (10 - totalMoney) + "元");
                             $j(".footer-gap").css("background-color", "#928686");
                         } else if (totalMoney === 0) {
+                            show([$j(".shop-gap"), $j(".icon-num"), $j(".footer-money p")], false);
                             $j(".icon-wrap").css("backgroundColor", "#aaa");
                             $j(".footer-gap").css("background-color", "#928686");
                             $j(".footer-gap span").html("10元起送");
-                            $j(".shop-gap").css("display", "none");
-                            $j(".icon-num").css("display", "none");
-                            $j(".footer-money p").css("display", "none");
                             $j(".footer-money span").removeClass("initial-span").html("购物车空空入也~");
                         }
                     });
@@ -10126,17 +10123,13 @@ window.onload = function () {
                     oClick = 0;
                     lock = 1;
                     $j(".ectype" + j + "").remove();
-                    $j(".food-return").eq(j).css("display", "none");
-                    countDish.eq(j).css("display", "none");
-
+                    show([$j(".food-return").eq(j), countDish.eq(j), $j(".shop-gap"), $j(".icon-num"), $j(".footer-money p")], false);
                     $j(".icon-wrap").css("backgroundColor", "#aaa");
                     $j(".footer-gap").css("background-color", "#928686");
                     $j(".footer-gap span").html("10元起送");
-                    $j(".shop-gap").css("display", "none");
-                    $j(".icon-num").css("display", "none");
-                    $j(".footer-money p").css("display", "none");
                     $j(".footer-money span").removeClass("initial-span").html("购物车空空入也~");
                 });
+                // 函数  参数 =》[]  chaunyuansu   shuzu  houjia  flag  判断是否显示
             });
             foodReturn.eq(j).click(function () {
                 oClick--;
@@ -10146,8 +10139,7 @@ window.onload = function () {
                 $j(".icon-num").html(num);
                 $j(".footer-money p").html("￥" + totalMoney);
                 if (oClick === 0) {
-                    $j(this).css("display", "none");
-                    countDish.eq(j).css("display", "none");
+                    show([$j(this), countDish.eq(j)], false);
                     $j(".icon-wrap").css("backgroundColor", "#aaa");
                 }
 
@@ -10155,17 +10147,15 @@ window.onload = function () {
                     $j(".footer-gap span").html("还差" + (10 - totalMoney) + "元");
                     $j(".footer-gap").css("background-color", "#928686");
                 } else if (totalMoney === 0) {
+                    show([$j(".shop-gap"), $j(".icon-num"), $j(".footer-money p")], false);
                     $j(".footer-gap").css("background-color", "#928686");
                     $j(".footer-gap span").html("10元起送");
-                    $j(".shop-gap").css("display", "none");
-                    $j(".icon-num").css("display", "none");
-                    $j(".footer-money p").css("display", "none");
                     $j(".footer-money span").removeClass("initial-span").html("购物车空空入也~");
                 }
             });
         })(i);
     }
-
+    //购物车点击购物袋显示与否
     $j(".footer-goods").click(function () {
         if (flag === true) {
             if (totalMoney > 0) {
@@ -10177,10 +10167,25 @@ window.onload = function () {
         flag = !flag;
     });
 
+    //阴影部分点击事件
     $j(".gap-shadow").click(function () {
         $j(".shop-gap").css("display", "none");
     });
 };
+
+//数组中保存需要操作的元素，_flag == true 显示
+function show(arr, _flag) {
+    var myArr = arr || [];
+    if (_flag) {
+        myArr.forEach(function (ele, index) {
+            ele.css("display", "block");
+        });
+    } else {
+        myArr.forEach(function (ele, index) {
+            ele.css("display", "none");
+        });
+    }
+}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(110)))
 
 /***/ }),
