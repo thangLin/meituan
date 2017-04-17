@@ -92,7 +92,7 @@ img {
 }
 @media only screen and (min-width: 320px) and (max-width: 359px) {
   .content-wrap {
-    height: 430px;
+    height: 433px;
   }
   .type-list-box {
     width: 20%;
@@ -129,10 +129,7 @@ img {
 }
 @media only screen and (min-width: 360px) and (max-width: 374px) {
   .content-wrap {
-    height: 495px;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
+    height: 499px;
   }
   .type-list-box {
     width: 20%;
@@ -169,10 +166,7 @@ img {
 }
 @media only screen and (min-width: 375px) and (max-width: 413px) {
   .content-wrap {
-    height: 512px;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
+    height: 525px;
   }
   .type-list-box {
     width: 20%;
@@ -210,10 +204,7 @@ img {
 }
 @media only screen and (min-width: 414px) {
   .content-wrap {
-    height: 576px;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
+    height: 586px;
   }
   .type-list-box {
     width: 25%;
@@ -252,10 +243,9 @@ img {
 .content-wrap {
   width: 100%;
   overflow: hidden;
-  position: relative;
+  position: absolute;
 }
 .dishes-wrap {
-  position: relative;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -264,11 +254,12 @@ img {
 .dishes-wrap .dishType-box {
   height: 100%;
   width: 100%;
-  display: relative;
 }
 .dishes-wrap .type-list-box {
   background: #efefef;
   float: left;
+  position: absolute;
+  left: 0px;
 }
 .dishes-wrap .type-list-box .list-item {
   height: 60px;
@@ -299,7 +290,8 @@ img {
 }
 .dishes-wrap .dish-list-box {
   float: right;
-  position: relative;
+  position: absolute;
+  right: 0px;
 }
 .dishes-wrap .dish-list-box ul {
   width: 100%;

@@ -1,32 +1,27 @@
+@media only screen and (min-width: 320px) {
+  .shop-gap {
+    height: 83%;
+  }
+}
 @media only screen and (min-width: 360px) {
-  .footer-wrap {
-    height: 70px;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
+  .shop-gap {
+    height: 84%;
   }
 }
 @media only screen and (min-width: 375px) {
-  .footer-wrap {
-    height: 65px;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
+  .shop-gap {
+    height: 563px;
   }
 }
 @media only screen and (min-width: 414px) {
-  .footer-wrap {
-    height: 70px;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
+  .shop-gap {
+    height: 85%;
   }
 }
 .shop-gap {
   position: absolute;
   bottom: 8%;
   width: 100%;
-  height: 84%;
   display: none;
 }
 .shop-gap .gap-shadow {

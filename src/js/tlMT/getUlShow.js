@@ -62,7 +62,7 @@ oDiv.get(0).addEventListener('touchstart',function(e){
             curTop =  $(this).position().top,
             //需要用到当前的top值去判断还能否移动
             curY =  eve.touches[0].pageY||e.touches[0].clientY||eve.touches[0].screenY;
-            moveLen  = curY - initialY;
+            moveLen  = initialY -curY;
         if(-curTop > lastTop -5 && moveLen > 0){
             $(this).css({top: -lastTop })   
         }else if(-curTop < 5 && moveLen < 0){
