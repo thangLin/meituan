@@ -10,9 +10,9 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname,"./static/"),
-        // publicPath: './static/',
+        publicPath: './static/',
         // publicPath:"https://localhost:8080/out/",
-        publicPath:'https://localhost:8080/static/',
+        // publicPath:'https://localhost:8080/static/',
         filename: '[name].js'
     },
     externals:{
