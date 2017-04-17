@@ -1,4 +1,4 @@
-$(window).on("type", function () {    
+$(window).on("tap", function () {    
     var foodBuy = $(".food-buy"); // +
     var countDish = $(".count-dish"); // 显示单个商品购买数量
     var foodReturn = $(".food-return"); // -
@@ -15,7 +15,7 @@ $(window).on("type", function () {
             var html = '';
             // var count = 1; //记录点击次数
             var singleMoney = 0; //单个商品价格
-            foodBuy.eq(j).on("type", function() {
+            foodBuy.eq(j).on("tap", function() {
                 oClick++;
                 num++;
                 // - 数量 + 
@@ -56,7 +56,7 @@ $(window).on("type", function () {
                     $(".gap-head").after(html);
                     lock = 0;
                     //元素在onload事件之后添加，需手动添加事件
-                    $(".add" + j + "").on("type", function() {
+                    $(".add" + j + "").on("tap", function() {
                         num++;
                         oClick++;
                         totalMoney += singleMoney;
@@ -73,7 +73,7 @@ $(window).on("type", function () {
                         }
 
                     })
-                    $(".minus" + j + "").on("type", function() {
+                    $(".minus" + j + "").on("tap", function() {
                         num--;
                         oClick--;
                         totalMoney -= singleMoney;
@@ -103,7 +103,7 @@ $(window).on("type", function () {
                 $(".const" + j + "").html(oClick);
 
                 //alert只有点击确认 ， 点击清空购物车区域，直接清空一切
-                $(".gap-right").on("type", function() {
+                $(".gap-right").on("tap", function() {
                         // alert("是否清空购物车内所有商品？");
                         num = 0;
                         totalMoney = 0;
@@ -120,7 +120,7 @@ $(window).on("type", function () {
                     // 函数  参数 =》[]  chaunyuansu   shuzu  houjia  flag  判断是否显示
 
             });
-            foodReturn.eq(j).on("type", function() {
+            foodReturn.eq(j).on("tap", function() {
                 oClick--;
                 num--;
                 totalMoney -= parseInt(buyMoney.eq(j).html().substr(1));
@@ -145,7 +145,7 @@ $(window).on("type", function () {
         }(i))
     }
     //购物车点击购物袋显示与否
-    $(".footer-goods").on("type", function() {
+    $(".footer-goods").on("tap", function() {
         if (flag === true) {
             if (totalMoney > 0) {
                 $(".shop-gap").css("display", "block");
@@ -157,7 +157,7 @@ $(window).on("type", function () {
     })
 
     //阴影部分点击事件
-    $(".gap-shadow").on("type", function() {
+    $(".gap-shadow").on("tap", function() {
         $(".shop-gap").css("display", "none");
     })
 
