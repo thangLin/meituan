@@ -122,7 +122,7 @@ function clickRestaurant(data) {
       var index = $(this).index();
       var oData = JSON.stringify(data[index]);
       sessionStorage.shopInfo = oData;
-      window.location.href = '../../second.html';
+      window.location.href = '../second.html';
       //实现不用a标签就能跳转页面
    });
 }
@@ -14078,7 +14078,7 @@ function loadImg(src, tar) {
 
 function createLi() {
     var arr = [];
-    var str = "../src/img/0";
+    var str = "./src/img/0";
     for (var i = 1; i < 7; i++) {
         var $li = $('<li></li>')[0];
         arr.push($li);

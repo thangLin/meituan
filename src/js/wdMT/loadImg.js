@@ -12,7 +12,7 @@ function loadImg(src,tar){
 
 function createLi(){
     var arr = [];
-    var str = "../src/img/0";
+    var str = "./src/img/0";
     for(let i = 1;i < 7;i++){
         let $li = $('<li></li>')[0];
         arr.push($li)
