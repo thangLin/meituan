@@ -1,6 +1,6 @@
 function backPage(){
     $('.backPage-box').tap(function(){
-       window.location.href = "../../first.html";
+       window.location.href = "../../meituan/first.html";
        sessionStorage.shopInfo = "";
     })
 }

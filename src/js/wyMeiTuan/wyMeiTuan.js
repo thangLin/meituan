@@ -1,4 +1,4 @@
-$(window).on("tap", function () {    
+window.onload = function () {    
     var foodBuy = $(".food-buy"); // +
     var countDish = $(".count-dish"); // 显示单个商品购买数量
     var foodReturn = $(".food-return"); // -
@@ -15,7 +15,7 @@ $(window).on("tap", function () {
             var html = '';
             // var count = 1; //记录点击次数
             var singleMoney = 0; //单个商品价格
-            foodBuy.eq(j).on("tap", function() {
+            foodBuy.eq(j).on("tap", myFlag(function() {
                 oClick++;
                 num++;
                 // - 数量 + 
@@ -56,7 +56,7 @@ $(window).on("tap", function () {
                     $(".gap-head").after(html);
                     lock = 0;
                     //元素在onload事件之后添加，需手动添加事件
-                    $(".add" + j + "").on("tap", function() {
+                    $(".add" + j + "").on("tap", myFlag(function() {
                         num++;
                         oClick++;
                         totalMoney += singleMoney;
@@ -72,8 +72,8 @@ $(window).on("tap", function () {
                             $(".footer-gap span").html("还差" + (10 - totalMoney) + "元");
                         }
 
-                    })
-                    $(".minus" + j + "").on("tap", function() {
+                    }))
+                    $(".minus" + j + "").on("tap", myFlag(function() {
                         num--;
                         oClick--;
                         totalMoney -= singleMoney;
@@ -96,14 +96,14 @@ $(window).on("tap", function () {
                             $(".footer-gap span").html("10元起送");
                             $(".footer-money span").removeClass("initial-span").html("购物车空空入也~");
                         }
-                    })
+                    }))
 
                 }
                 $(".single" + j + "").html('￥' + singleMoney * oClick);
                 $(".const" + j + "").html(oClick);
 
                 //alert只有点击确认 ， 点击清空购物车区域，直接清空一切
-                $(".gap-right").on("tap", function() {
+                $(".gap-right").on("tap", myFlag(function() {
                         // alert("是否清空购物车内所有商品？");
                         num = 0;
                         totalMoney = 0;
@@ -116,11 +116,11 @@ $(window).on("tap", function () {
                         $(".footer-gap").css("background-color", "#928686");
                         $(".footer-gap span").html("10元起送");
                         $(".footer-money span").removeClass("initial-span").html("购物车空空入也~");
-                    })
+                    }))
                     // 函数  参数 =》[]  chaunyuansu   shuzu  houjia  flag  判断是否显示
 
-            });
-            foodReturn.eq(j).on("tap", function() {
+            }));
+            foodReturn.eq(j).on("tap", myFlag(function() {
                 oClick--;
                 num--;
                 totalMoney -= parseInt(buyMoney.eq(j).html().substr(1));
@@ -141,11 +141,12 @@ $(window).on("tap", function () {
                     $(".footer-gap span").html("10元起送");
                     $(".footer-money span").removeClass("initial-span").html("购物车空空入也~");
                 }
-            })
+            }))
         }(i))
     }
     //购物车点击购物袋显示与否
-    $(".footer-goods").on("tap", function() {
+    $(".footer-goods").on("tap",myFlag(function() {
+        console.log("00")
         if (flag === true) {
             if (totalMoney > 0) {
                 $(".shop-gap").css("display", "block");
@@ -154,15 +155,15 @@ $(window).on("tap", function () {
             $(".shop-gap").css("display", "none");
         }
         flag = !flag;
-    })
+    }))
 
     //阴影部分点击事件
-    $(".gap-shadow").on("tap", function() {
+    $(".gap-shadow").on("tap", myFlag(function() {
         $(".shop-gap").css("display", "none");
-    })
+    }))
 
 
-})
+}
 
 //数组中保存需要操作的元素，_flag == true 显示
 function show(arr, _flag) {
@@ -175,5 +176,15 @@ function show(arr, _flag) {
         myArr.forEach(function(ele, index) {
             ele.css("display", "none");
         })
+    }
+}
+
+function myFlag (handle) {
+    var oflag = true;
+    return function () {
+        if (oflag) {
+            handle()
+        }
+        oflag = !oflag;
     }
 }
